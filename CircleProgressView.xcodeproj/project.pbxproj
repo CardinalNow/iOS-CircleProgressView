@@ -12,6 +12,7 @@
 		CB095FCE199A8F44009C1C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCC199A8F44009C1C26 /* Main.storyboard */; };
 		CB095FD0199A8F44009C1C26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCF199A8F44009C1C26 /* Images.xcassets */; };
 		CB095FDC199A8F44009C1C26 /* CircleProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FDB199A8F44009C1C26 /* CircleProgressViewTests.swift */; };
+		CB095FE7199A8F7A009C1C26 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		CB095FD5199A8F44009C1C26 /* CircleProgressViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircleProgressViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB095FDA199A8F44009C1C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB095FDB199A8F44009C1C26 /* CircleProgressViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressViewTests.swift; sourceTree = "<group>"; };
+		CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		CB095FBA199A8F44009C1C26 = {
 			isa = PBXGroup;
 			children = (
+				CB095FE5199A8F7A009C1C26 /* ProgressView */,
 				CB095FC5199A8F44009C1C26 /* CircleProgressView */,
 				CB095FD8199A8F44009C1C26 /* CircleProgressViewTests */,
 				CB095FC4199A8F44009C1C26 /* Products */,
@@ -107,6 +110,14 @@
 				CB095FDA199A8F44009C1C26 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB095FE5199A8F7A009C1C26 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */,
+			);
+			path = ProgressView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 			files = (
 				CB095FCB199A8F44009C1C26 /* ViewController.swift in Sources */,
 				CB095FC9199A8F44009C1C26 /* AppDelegate.swift in Sources */,
+				CB095FE7199A8F7A009C1C26 /* CircleProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
