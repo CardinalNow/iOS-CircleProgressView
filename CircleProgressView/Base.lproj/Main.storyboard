@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y83-4d-8fY" customClass="CircleProgressView" customModule="CircleProgressView" customModuleProvider="target">
-                                <rect key="frame" x="175" y="175" width="250" height="250"/>
+                                <rect key="frame" x="175" y="150" width="250" height="250"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="Hm8-Dh-irI"/>
@@ -30,25 +31,67 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="angular"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="centerFillColor">
                                         <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOz-HB-1dd">
+                                <rect key="frame" x="16" y="559" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="CmE-2p-of6"/>
+                                    <constraint firstAttribute="width" constant="120" id="VlS-uY-yPs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="M0Q-Fu-b6r">
+                                <rect key="frame" x="142" y="555" width="387" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="weE-bt-Wfr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderDidChangeValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="E3a-s5-1iV"/>
+                                </connections>
+                            </slider>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOf-ZN-5s6">
+                                <rect key="frame" x="535" y="554" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="tvr-ip-sz4"/>
+                                    <constraint firstAttribute="width" constant="49" id="yQ3-h0-BRO"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchDidChangeValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="hCd-fh-6dT"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TOf-ZN-5s6" secondAttribute="bottom" constant="15" id="DQV-mP-I7n"/>
                             <constraint firstAttribute="centerX" secondItem="Y83-4d-8fY" secondAttribute="centerX" id="Nrg-Hi-ic7"/>
-                            <constraint firstAttribute="centerY" secondItem="Y83-4d-8fY" secondAttribute="centerY" id="WFK-zA-kab"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pOz-HB-1dd" secondAttribute="bottom" constant="20" id="P4n-7z-DDd"/>
+                            <constraint firstAttribute="centerY" secondItem="Y83-4d-8fY" secondAttribute="centerY" constant="25" id="WFK-zA-kab"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M0Q-Fu-b6r" secondAttribute="bottom" constant="15" id="bcW-P3-Yqq"/>
+                            <constraint firstItem="pOz-HB-1dd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dth-W4-hfR"/>
+                            <constraint firstItem="TOf-ZN-5s6" firstAttribute="leading" secondItem="M0Q-Fu-b6r" secondAttribute="trailing" constant="8" id="f4o-gX-KW6"/>
+                            <constraint firstItem="TOf-ZN-5s6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gDb-iX-71e"/>
+                            <constraint firstItem="M0Q-Fu-b6r" firstAttribute="leading" secondItem="pOz-HB-1dd" secondAttribute="trailing" constant="8" id="onn-uo-0ry"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="circleProgressView" destination="Y83-4d-8fY" id="tG2-LL-o5I"/>
+                        <outlet property="clockwiseSwitch" destination="TOf-ZN-5s6" id="dC4-Oa-FWI"/>
+                        <outlet property="progressLabel" destination="pOz-HB-1dd" id="27b-dQ-UUi"/>
+                        <outlet property="progressSlider" destination="M0Q-Fu-b6r" id="JHa-9l-e2P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
     <resources>
-        <image name="progressImage" width="250" height="250"/>
+        <image name="angular" width="150" height="149"/>
     </resources>
 </document>
