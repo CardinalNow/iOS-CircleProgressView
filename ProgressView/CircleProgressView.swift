@@ -1,9 +1,9 @@
 //
 //  CircleProgressView.swift
-//  iOS 8 Demo
+//
 //
 //  Created by Eric Rolf on 8/11/14.
-//  Copyright (c) 2014 Eric Rolf. All rights reserved.
+//  Copyright (c) 2014 Eric Rolf, Cardinal Solutions Group. All rights reserved.
 //
 
 import UIKit
@@ -11,9 +11,9 @@ import QuartzCore
 
 @IBDesignable
 
-class CircleProgressView: UIView {
+@objc class CircleProgressView: UIView {
 
-    struct Constants {
+    internal struct Constants {
         static let circleDegress = 360.0
         static let minimumValue = 0.000001
         static let maximumValue = 0.999999
@@ -23,7 +23,7 @@ class CircleProgressView: UIView {
         static var contentContainer:UIView = UIView()
     }
     
-    @IBInspectable var progress: Double = 0.0 {
+    @IBInspectable var progress: Double = Constants.minimumValue {
         didSet { setNeedsDisplay() }
     }
 
@@ -68,7 +68,7 @@ class CircleProgressView: UIView {
         self.addSubview(contentView)
     }
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addSubview(contentView)
     }
@@ -86,7 +86,6 @@ class CircleProgressView: UIView {
         progress = (progress/1.0) == 1.0 ? Constants.maximumValue : progress
         progress = clockwise ? (-Constants.twoSeventyDegrees + ((1.0 - progress) * Constants.circleDegress)) : (Constants.ninetyDegrees - ((1.0 - progress) * Constants.circleDegress))
         
-        // General Declarations
         let context = UIGraphicsGetCurrentContext()
         
         // background Drawing

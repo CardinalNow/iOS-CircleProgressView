@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  CircleProgressView
 //
-//  Created by Eric Rolf on 8/12/14.
-//  Copyright (c) 2014 Eric Rolf. All rights reserved.
+//  Created by Eric Rolf on 8/11/14.
+//  Copyright (c) 2014 Eric Rolf, Cardinal Solutions Group. All rights reserved.
 //
 
 import UIKit
@@ -15,20 +15,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var clockwiseSwitch: UISwitch!
     
+    let nf = NSNumberFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        nf.maximumFractionDigits = 2
+        
         self.clockwiseSwitch.setOn(self.circleProgressView.clockwise, animated: false)
         self.progressSlider.value = Float(self.circleProgressView.progress)
-        self.progressLabel.text = NSString(format:"%.3f", self.circleProgressView.progress)
-
-        //        delay(5.0) {
-        //            self.circleProgressView.progress = 0.75
-        //        }
+        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - IBActions
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
     @IBAction func sliderDidChangeValue(sender: AnyObject) {
         let slider:UISlider = sender as UISlider
         self.circleProgressView.progress = Double(slider.value)
-        self.progressLabel.text = NSString(format:"%.3f", slider.value)
+        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))
     }
     
     @IBAction func switchDidChangeValue(sender: AnyObject) {
@@ -54,5 +55,5 @@ class ViewController: UIViewController {
             ),
             dispatch_get_main_queue(), closure)
     }
+    
 }
-

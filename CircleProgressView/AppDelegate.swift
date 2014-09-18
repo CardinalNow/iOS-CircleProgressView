@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  CircleProgressView
 //
-//  Created by Eric Rolf on 8/12/14.
-//  Copyright (c) 2014 Eric Rolf. All rights reserved.
+//  Created by Eric Rolf on 8/11/14.
+//  Copyright (c) 2014 Eric Rolf, Cardinal Solutions Group. All rights reserved.
 //
 
 import UIKit
