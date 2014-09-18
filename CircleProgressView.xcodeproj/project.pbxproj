@@ -409,6 +409,7 @@
 				CB095FE1199A8F44009C1C26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB095FE2199A8F44009C1C26 /* Build configuration list for PBXNativeTarget "CircleProgressViewTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				CB095FE4199A8F44009C1C26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
