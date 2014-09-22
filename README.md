@@ -60,4 +60,4 @@ App Preview
 ## Author / License
 
 Copyright Cardinal Solutions 2013. Licensed under the MIT license.
-<img src="https://raw.github.com/CardinalNow/NSURLConnection-Debug/master/logo_footer.png"/>
+![LOGO](https://raw.github.com/CardinalNow/NSURLConnection-Debug/master/logo_footer.png)
