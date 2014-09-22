@@ -48,14 +48,14 @@ Preview
 -------
 
 Interface Builder live rendering.
-![Live Rendering](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_04.png)
+![Live Rendering](https://raw.githubusercontent.com/CardinalNow/iOS-CircleProgressView/master/ScreenShots/ss_4.png)
 
 Interface Builder control configurations.
-![Controls](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_03.png)
+![Controls](https://raw.githubusercontent.com/CardinalNow/iOS-CircleProgressView/master/ScreenShots/ss_03.png)
 
 App Preview
-![Preview Simulator](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_01.png)
-![Preview Simulator](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_02.png)
+![Preview Simulator](https://raw.githubusercontent.com/CardinalNow/iOS-CircleProgressView/master/ScreenShots/ss_01.png)
+![Preview Simulator](https://raw.githubusercontent.com/CardinalNow/iOS-CircleProgressView/master/ScreenShots/ss_2.png)
 
 ## Author / License
 
