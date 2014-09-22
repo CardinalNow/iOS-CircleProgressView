@@ -29,7 +29,7 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.5"/>
+                                        <real key="value" value="0.65000000000000002"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
                                 </userDefinedRuntimeAttributes>

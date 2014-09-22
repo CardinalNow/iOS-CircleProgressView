@@ -47,11 +47,11 @@ import QuartzCore
         didSet { setNeedsDisplay() }
     }
     
-    @IBInspectable var trackBoarderColor:UIColor = UIColor.clearColor() {
+    @IBInspectable var trackBorderColor:UIColor = UIColor.clearColor() {
         didSet { setNeedsDisplay() }
     }
     
-    @IBInspectable var trackBoarderWidth: CGFloat = 0 {
+    @IBInspectable var trackBorderWidth: CGFloat = 0 {
         didSet { setNeedsDisplay() }
     }
     
@@ -81,8 +81,8 @@ import QuartzCore
     override func drawRect(var rect: CGRect) {
         
         super.drawRect(rect)
-        
-        let innerRect = CGRectInset(rect, trackBoarderWidth, trackBoarderWidth)
+
+        let innerRect = CGRectInset(rect, trackBorderWidth, trackBorderWidth)
     
         progress = (progress/1.0) == 0.0 ? Constants.minimumValue : progress
         progress = (progress/1.0) == 1.0 ? Constants.maximumValue : progress
@@ -95,9 +95,9 @@ import QuartzCore
         let circlePath = UIBezierPath(ovalInRect: CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect)))
         circlePath.fill();
         
-        if trackBoarderWidth > 0 {
-            circlePath.lineWidth = trackBoarderWidth
-            trackBoarderColor.setStroke()
+        if trackBorderWidth > 0 {
+            circlePath.lineWidth = trackBorderWidth
+            trackBorderColor.setStroke()
             circlePath.stroke()
         }
     
