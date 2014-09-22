@@ -80,6 +80,8 @@ import QuartzCore
     
     override func drawRect(var rect: CGRect) {
         
+        super.drawRect(rect)
+        
         let innerRect = CGRectInset(rect, trackBoarderWidth, trackBoarderWidth)
     
         progress = (progress/1.0) == 0.0 ? Constants.minimumValue : progress
