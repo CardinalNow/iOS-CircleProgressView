@@ -42,20 +42,20 @@ CircleProgressView can be used via code or interface builder.
 
 * If configuring via code, use the traditional init methods and properties.
 
-* If using Interface Builder, CircleProgressView takes advantage of XCode 6's new ```swift @IBDesignable ``` and ```swift @IBInspectable ``` properties that allow developers to render and configure custom controls in Interface Builder.
+* If using Interface Builder, CircleProgressView takes advantage of XCode 6's new ```Swift @IBDesignable ``` and ```Swift @IBInspectable ``` properties that allow developers to render and configure custom controls in Interface Builder.
 
 Preview
 -------
 
 Interface Builder live rendering.
---LINK--
+![Live Rendering](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_04.png)
 
 Interface Builder control configurations.
---LINK--
+![Controls](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_03.png)
 
 App Preview
---LINK--
-
+![Preview Simulator](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_01.png)
+![Preview Simulator](https://gitlab.cardinalsolutions.com/cardinalsolutions-ios-controls/circleprogressview/raw/master/ScreenShots/ss_02.png)
 
 ## Author / License
 
