@@ -3,7 +3,7 @@ iOS CircleProgressView
 
 This control will allow a user to use code instantiated or interface builder to create and render a circle progress view.
  
-This repository is referenced in the blog post: --LINK--
+This repository is referenced in the blog post: <a href="http://www.cardinalsolutions.com/cardinal/blog/mobile/2014/10/ios_circleprogressvi.html">iOS CircleProgressView</a>
 
 Features
 ------
