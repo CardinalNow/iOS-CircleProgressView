@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         self.clockwiseSwitch.setOn(self.circleProgressView.clockwise, animated: false)
         self.progressSlider.value = Float(self.circleProgressView.progress)
-        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))
+        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))!
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     @IBAction func sliderDidChangeValue(sender: AnyObject) {
         let slider:UISlider = sender as UISlider
         self.circleProgressView.progress = Double(slider.value)
-        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))
+        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))!
     }
     
     @IBAction func switchDidChangeValue(sender: AnyObject) {
