@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class CircularProgressView: UIView {
+@IBDesignable class CircleProgressView: UIView {
 
     internal struct Constants {
         let circleDegress = 360.0
