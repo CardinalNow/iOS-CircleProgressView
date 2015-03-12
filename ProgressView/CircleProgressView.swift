@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class CircleProgressView: UIView {
+@IBDesignable public class CircleProgressView: UIView {
 
     internal struct Constants {
         let circleDegress = 360.0
@@ -22,62 +22,62 @@ import UIKit
 
     let constants = Constants()
 
-    @IBInspectable var progress: Double = 0.000001 {
+    @IBInspectable public var progress: Double = 0.000001 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var clockwise: Bool = true {
+    @IBInspectable public var clockwise: Bool = true {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackWidth: CGFloat = 10 {
+    @IBInspectable public var trackWidth: CGFloat = 10 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackImage: UIImage? {
+    @IBInspectable public var trackImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackBackgroundColor: UIColor = UIColor.grayColor() {
+    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.grayColor() {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackFillColor: UIColor = UIColor.blueColor() {
+    @IBInspectable public var trackFillColor: UIColor = UIColor.blueColor() {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackBorderColor:UIColor = UIColor.clearColor() {
+    @IBInspectable public var trackBorderColor:UIColor = UIColor.clearColor() {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var trackBorderWidth: CGFloat = 0 {
+    @IBInspectable public var trackBorderWidth: CGFloat = 0 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var centerFillColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable public var centerFillColor: UIColor = UIColor.whiteColor() {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable var contentView: UIView {
+    @IBInspectable public var contentView: UIView {
         return self.constants.contentView
     }
 
-    required override init(frame: CGRect) {
+    required override public init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(contentView)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addSubview(contentView)
     }
 
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         self.addSubview(contentView)
     }
 
-    override func drawRect(rect: CGRect) {
+    override public func drawRect(rect: CGRect) {
         
         super.drawRect(rect)
         
