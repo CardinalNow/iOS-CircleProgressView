@@ -21,9 +21,13 @@ import UIKit
     }
 
     let constants = Constants()
+    private var internalProgress:Double = 0.0
 
     @IBInspectable public var progress: Double = 0.000001 {
-        didSet { setNeedsDisplay() }
+        didSet {
+            internalProgress = progress
+            setNeedsDisplay()
+        }
     }
 
     @IBInspectable public var clockwise: Bool = true {
@@ -72,20 +76,17 @@ import UIKit
         self.addSubview(contentView)
     }
 
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        self.addSubview(contentView)
-    }
-
     override public func drawRect(rect: CGRect) {
         
         super.drawRect(rect)
         
         let innerRect = CGRectInset(rect, trackBorderWidth, trackBorderWidth)
         
-        progress = (progress/1.0) == 0.0 ? constants.minimumValue : progress
-        progress = (progress/1.0) == 1.0 ? constants.maximumValue : progress
-        progress = clockwise ? (-constants.twoSeventyDegrees + ((1.0 - progress) * constants.circleDegress)) : (constants.ninetyDegrees - ((1.0 - progress) * constants.circleDegress))
+        internalProgress = (internalProgress/1.0) == 0.0 ? constants.minimumValue : progress
+        internalProgress = (internalProgress/1.0) == 1.0 ? constants.maximumValue : progress
+        internalProgress = clockwise ?
+                                (-constants.twoSeventyDegrees + ((1.0 - internalProgress) * constants.circleDegress)) :
+                                (constants.ninetyDegrees - ((1.0 - internalProgress) * constants.circleDegress))
         
         let context = UIGraphicsGetCurrentContext()
         
@@ -105,8 +106,8 @@ import UIKit
         let progressRect: CGRect = CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect))
         let center = CGPointMake(progressRect.midX, progressRect.midY)
         let radius = progressRect.width / 2.0
-        let startAngle:CGFloat = clockwise ? CGFloat(-progress * M_PI / 180.0) : CGFloat(constants.twoSeventyDegrees * M_PI / 180)
-        let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-progress * M_PI / 180.0)
+        let startAngle:CGFloat = clockwise ? CGFloat(-internalProgress * M_PI / 180.0) : CGFloat(constants.twoSeventyDegrees * M_PI / 180)
+        let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-internalProgress * M_PI / 180.0)
         
         progressPath.addArcWithCenter(center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
         progressPath.addLineToPoint(CGPointMake(progressRect.midX, progressRect.midY))
@@ -133,7 +134,5 @@ import UIKit
         let layer = CAShapeLayer()
         layer.path = centerPath.CGPath
         contentView.layer.mask = layer
-        
     }
-
 }
