@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.requires_arc = true
   s.source_files = 'ProgressView/*'
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
 end
