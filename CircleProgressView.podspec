@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'CircleProgressView'
-  s.version  = '1.0.1'
+  s.version  = '1.0.2'
   s.license  = 'MIT'
   s.summary  = 'CircleProgressView'
   s.homepage = 'https://github.com/CardinalNow/iOS-CircleProgressView'
