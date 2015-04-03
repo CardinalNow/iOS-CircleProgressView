@@ -12,7 +12,8 @@
 		CB095FCE199A8F44009C1C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCC199A8F44009C1C26 /* Main.storyboard */; };
 		CB095FD0199A8F44009C1C26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCF199A8F44009C1C26 /* Images.xcassets */; };
 		CB095FDC199A8F44009C1C26 /* CircleProgressViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FDB199A8F44009C1C26 /* CircleProgressViewTests.swift */; };
-		CB095FE7199A8F7A009C1C26 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */; };
+		CB32EF7A1ACED7960087BF0F /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB32EF791ACED7960087BF0F /* CircleProgressView.m */; };
+		CB3619241ACEE872008890C1 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,9 @@
 		CB095FDA199A8F44009C1C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB095FDB199A8F44009C1C26 /* CircleProgressViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressViewTests.swift; sourceTree = "<group>"; };
 		CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		CB32EF771ACED7950087BF0F /* CircleProgressView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CircleProgressView-Bridging-Header.h"; sourceTree = "<group>"; };
+		CB32EF781ACED7960087BF0F /* CircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressView.h; sourceTree = "<group>"; };
+		CB32EF791ACED7960087BF0F /* CircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,9 @@
 			isa = PBXGroup;
 			children = (
 				CB095FE6199A8F7A009C1C26 /* CircleProgressView.swift */,
+				CB32EF781ACED7960087BF0F /* CircleProgressView.h */,
+				CB32EF791ACED7960087BF0F /* CircleProgressView.m */,
+				CB32EF771ACED7950087BF0F /* CircleProgressView-Bridging-Header.h */,
 			);
 			path = ProgressView;
 			sourceTree = "<group>";
@@ -220,8 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB095FCB199A8F44009C1C26 /* ViewController.swift in Sources */,
+				CB3619241ACEE872008890C1 /* CircleProgressView.swift in Sources */,
+				CB32EF7A1ACED7960087BF0F /* CircleProgressView.m in Sources */,
 				CB095FC9199A8F44009C1C26 /* AppDelegate.swift in Sources */,
-				CB095FE7199A8F7A009C1C26 /* CircleProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,9 +347,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CircleProgressView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProgressView/CircleProgressView-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -350,9 +361,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CircleProgressView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ProgressView/CircleProgressView-Bridging-Header.h";
 			};
 			name = Release;
 		};
