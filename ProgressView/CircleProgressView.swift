@@ -17,7 +17,6 @@ import UIKit
         let ninetyDegrees = 90.0
         let twoSeventyDegrees = 270.0
         var contentView:UIView = UIView()
-        var contentContainer:UIView = UIView()
     }
 
     let constants = Constants()
