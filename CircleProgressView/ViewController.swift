@@ -35,13 +35,13 @@ class ViewController: UIViewController {
     // MARK: - IBActions
 
     @IBAction func sliderDidChangeValue(sender: AnyObject) {
-        let slider:UISlider = sender as UISlider
+        let slider:UISlider = sender as! UISlider
         self.circleProgressView.progress = Double(slider.value)
         self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))!
     }
     
     @IBAction func switchDidChangeValue(sender: AnyObject) {
-        let mySwitch:UISwitch = sender as UISwitch
+        let mySwitch:UISwitch = sender as! UISwitch
         self.circleProgressView.clockwise = mySwitch.on
         self.circleProgressView.progress = self.circleProgressView.progress
     }
