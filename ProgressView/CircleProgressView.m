@@ -122,7 +122,7 @@ struct Constants {              // Default Values = Private
     CGRect innerRect = CGRectInset(rect, self.trackBorderWidth, self.trackBorderWidth);
     
     self.internalProgress = (self.internalProgress/1.0) == 0.0 ? self.constants.minimumValue : self.progress;
-    self.internalProgress = (self.internalProgress/1.0) == 1.0 ? self.constants.maximumValue : self.progress;
+    self.internalProgress = (self.internalProgress/1.0) == 1.0 ? self.constants.maximumValue : self.internalProgress;
     self.internalProgress = self.clockwise ?
                             (-self.constants.twoSeventyDegrees + ((1.0 - self.internalProgress) * self.constants.circleDegress)) :
                             (self.constants.ninetyDegrees - ((1.0 - self.internalProgress) * self.constants.circleDegress));

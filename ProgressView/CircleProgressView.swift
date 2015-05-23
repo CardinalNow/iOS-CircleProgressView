@@ -82,7 +82,7 @@ import UIKit
         let innerRect = CGRectInset(rect, trackBorderWidth, trackBorderWidth)
         
         internalProgress = (internalProgress/1.0) == 0.0 ? constants.minimumValue : progress
-        internalProgress = (internalProgress/1.0) == 1.0 ? constants.maximumValue : progress
+        internalProgress = (internalProgress/1.0) == 1.0 ? constants.maximumValue : internalProgress
         internalProgress = clockwise ?
                                 (-constants.twoSeventyDegrees + ((1.0 - internalProgress) * constants.circleDegress)) :
                                 (constants.ninetyDegrees - ((1.0 - internalProgress) * constants.circleDegress))
