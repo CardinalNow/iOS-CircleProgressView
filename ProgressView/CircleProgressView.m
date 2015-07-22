@@ -49,6 +49,17 @@ struct Constants {              // Default Values = Private
     return self;
 }
 
+#pragma mark - Interface Builder
+
+- (void)prepareForInterfaceBuilder {
+    self.trackBackgroundColor = (self.trackBackgroundColor)? :[UIColor darkGrayColor];
+    self.trackFillColor = (self.trackFillColor)? :[UIColor purpleColor];
+    self.trackWidth = (self.trackWidth)? :10;
+    self.clockwise = (self.clockwise)? :true;
+    self.progress = (self.progress)? :.45;
+    self.centerFillColor = (self.centerFillColor)? : [UIColor whiteColor];
+}
+
 #pragma mark - Setup
 
 - (void)setup {
