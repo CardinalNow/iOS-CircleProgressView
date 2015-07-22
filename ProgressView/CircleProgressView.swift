@@ -60,6 +60,10 @@ import UIKit
     @IBInspectable public var centerFillColor: UIColor = UIColor.whiteColor() {
         didSet { setNeedsDisplay() }
     }
+    
+    @IBInspectable public var centerImage: UIImage? {
+        didSet { setNeedsDisplay() }
+    }
 
     @IBInspectable public var contentView: UIView {
         return self.constants.contentView
@@ -130,8 +134,16 @@ import UIKit
         centerFillColor.setFill()
         centerPath.fill()
         
-        let layer = CAShapeLayer()
-        layer.path = centerPath.CGPath
-        contentView.layer.mask = layer
+        if let centerImage = centerImage {
+            CGContextSaveGState(context)
+            centerPath.addClip()
+            centerImage.drawInRect(rect)
+            CGContextRestoreGState(context)
+        } else {
+            let layer = CAShapeLayer()
+            layer.path = centerPath.CGPath
+            contentView.layer.mask = layer
+        }
+        
     }
 }
