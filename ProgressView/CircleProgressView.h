@@ -21,6 +21,7 @@ IB_DESIGNABLE
 @property (nonatomic, strong)       IBInspectable   UIColor *trackBorderColor;
 @property (nonatomic, readwrite)    IBInspectable   CGFloat trackBorderWidth;
 @property (nonatomic, strong)       IBInspectable   UIColor *centerFillColor;
+@property (nonatomic, strong)       IBInspectable   UIImage *centerImage;
 
 @property (nonatomic, strong)                       UIView *contentView;
 

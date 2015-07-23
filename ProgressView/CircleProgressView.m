@@ -16,7 +16,6 @@ struct Constants {              // Default Values = Private
     double maximumValue;        // = 0.999999
     double ninetyDegrees;       // = 90.0
     double twoSeventyDegrees;   // = 270.0
-    
 };
 
 @property (nonatomic, readwrite)           double internalProgress;
@@ -181,9 +180,16 @@ struct Constants {              // Default Values = Private
     [self.centerFillColor setFill];
     [centerPath fill];
     
-    CAShapeLayer *layer = [CAShapeLayer layer];
-    layer.path = centerPath.CGPath;
-    self.contentView.layer.mask = layer;
+    if (self.centerImage) {
+        CGContextSaveGState(ctx);
+        [centerPath addClip];
+        [self.centerImage drawInRect:rect];
+        CGContextRestoreGState(ctx);
+    } else {
+        CAShapeLayer *layer = [CAShapeLayer layer];
+        layer.path = centerPath.CGPath;
+        self.contentView.layer.mask = layer;
+    }
 }
 
 @end

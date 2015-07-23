@@ -144,6 +144,5 @@ import UIKit
             layer.path = centerPath.CGPath
             contentView.layer.mask = layer
         }
-        
     }
 }
