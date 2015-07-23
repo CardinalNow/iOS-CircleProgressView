@@ -18,6 +18,7 @@ Features
 * Track border color.
 * Track border width.
 * Center fill color.
+* Center fill image.
 
 Requirements
 -------
