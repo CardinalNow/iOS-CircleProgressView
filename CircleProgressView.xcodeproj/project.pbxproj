@@ -164,7 +164,8 @@
 		CB095FBB199A8F44009C1C26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
++				LastSwiftUpdateCheck = 0700;
 				ORGANIZATIONNAME = "Eric Rolf";
 				TargetAttributes = {
 					CB095FC2199A8F44009C1C26 = {
