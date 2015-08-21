@@ -38,6 +38,12 @@ Configuration
 #import "CircleProgressView-Swift.h"
 ```
 
+Cocoapods
+-------
+```
+pod 'CircleProgressView'
+```
+
 Usage
 -------
 
