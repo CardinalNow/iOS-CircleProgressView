@@ -18,8 +18,10 @@ struct Constants {              // Default Values = Private
     double twoSeventyDegrees;   // = 270.0
 };
 
-@property (nonatomic, readwrite)           double internalProgress;
-@property (nonatomic, readwrite)    struct Constants constants;
+@property (nonatomic, readwrite)            double internalProgress;
+@property (nonatomic, readwrite)     struct Constants constants;
+@property (nonatomic, readwrite)            double destinationProgress;
+@property (nonatomic, strong)               CADisplayLink *displayLink;
 
 @end
 
@@ -62,6 +64,8 @@ struct Constants {              // Default Values = Private
 #pragma mark - Setup
 
 - (void)setup {
+    self.destinationProgress = 0.0;
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkTick:)];
     self.contentView = [UIView new];
     self.constants = [self initConstants];
     
@@ -189,6 +193,37 @@ struct Constants {              // Default Values = Private
         CAShapeLayer *layer = [CAShapeLayer layer];
         layer.path = centerPath.CGPath;
         self.contentView.layer.mask = layer;
+    }
+}
+
+- (void)setProgress:(double)progress animated:(BOOL)animated {
+    if (animated) {
+        self.destinationProgress = progress;
+        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    } else {
+        self.progress = progress;
+    }
+}
+
+- (void)displayLinkTick:(CADisplayLink *)sender {
+    NSTimeInterval renderTime = sender.duration;
+    
+    if (self.destinationProgress > self.progress) {
+        self.progress += renderTime;
+        if (self.progress >= self.destinationProgress) {
+            self.progress = self.destinationProgress;
+            [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+            return;
+        }
+    }
+    
+    if (self.destinationProgress < self.progress) {
+        self.progress -= renderTime;
+        if (self.progress <= self.destinationProgress) {
+            self.progress = self.destinationProgress;
+            [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+            return;
+        }
     }
 }
 

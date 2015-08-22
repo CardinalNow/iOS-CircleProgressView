@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+@import QuartzCore;
 
 IB_DESIGNABLE
 
@@ -25,4 +26,5 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong)                       UIView *contentView;
 
+- (void)setProgress:(double)progress animated:(BOOL)animated;
 @end
