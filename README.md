@@ -62,6 +62,11 @@ and
 ``` 
 properties that allow developers to render and configure custom controls in Interface Builder.
 
+Animation
+-------
+
+You can now update the progress view with animation using the new animated option.
+
 Preview
 -------
 

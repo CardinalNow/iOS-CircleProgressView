@@ -10,7 +10,7 @@ import UIKit
 
 @objc @IBDesignable public class CircleProgressView: UIView {
 
-    internal struct Constants {
+    private struct Constants {
         let circleDegress = 360.0
         let minimumValue = 0.000001
         let maximumValue = 0.999999
@@ -19,9 +19,12 @@ import UIKit
         var contentView:UIView = UIView()
     }
 
-    let constants = Constants()
+    private let constants = Constants()
     private var internalProgress:Double = 0.0
 
+    private var displayLink: CADisplayLink?
+    private var destinationProgress: Double = 0.0
+    
     @IBInspectable public var progress: Double = 0.000001 {
         didSet {
             internalProgress = progress
@@ -71,14 +74,20 @@ import UIKit
 
     required override public init(frame: CGRect) {
         super.init(frame: frame)
+        internalInit()
         self.addSubview(contentView)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        internalInit()
         self.addSubview(contentView)
     }
-
+    
+    func internalInit() {
+        displayLink = CADisplayLink(target: self, selector: Selector("displayLinkTick"))
+    }
+    
     override public func drawRect(rect: CGRect) {
         
         super.drawRect(rect)
@@ -145,4 +154,43 @@ import UIKit
             contentView.layer.mask = layer
         }
     }
+    
+    //MARK: - Progress Update
+    
+    public func setProgress(newProgress: Double, animated: Bool) {
+        
+        if animated {
+            destinationProgress = newProgress
+            displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+        } else {
+            progress = newProgress
+        }
+    }
+    
+    //MARK: - CADisplayLink Tick
+    
+    internal func displayLinkTick() {
+        
+        let renderTime = displayLink!.duration
+
+        if destinationProgress > progress {
+            progress += renderTime
+            if progress >= destinationProgress {
+                progress = destinationProgress
+                displayLink?.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+                return
+            }
+        }
+        
+        if destinationProgress < progress {
+            progress -= renderTime
+            if progress <= destinationProgress {
+                progress = destinationProgress
+                displayLink?.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+                return
+            }
+        }
+    }
+    
+    
 }
