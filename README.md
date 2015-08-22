@@ -40,6 +40,8 @@ Configuration
 
 Cocoapods
 -------
+Current version is 1.0.7
+
 ```
 pod 'CircleProgressView'
 ```
