@@ -67,6 +67,10 @@ import UIKit
     @IBInspectable public var centerImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
+  
+    @IBInspectable var refreshRate: Double = 0.0166666666666667 {
+        didSet { setNeedsDisplay() }
+    }
 
     @IBInspectable public var contentView: UIView {
         return self.constants.contentView
@@ -171,7 +175,7 @@ import UIKit
     
     internal func displayLinkTick() {
         
-        let renderTime = displayLink!.duration
+        let renderTime = refreshRate
 
         if destinationProgress > progress {
             progress += renderTime
