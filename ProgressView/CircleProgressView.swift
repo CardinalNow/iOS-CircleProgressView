@@ -32,6 +32,10 @@ import UIKit
         }
     }
 
+    @IBInspectable public var refreshRate: Double = 0.0 {
+        didSet { setNeedsDisplay() }
+    }
+
     @IBInspectable public var clockwise: Bool = true {
         didSet { setNeedsDisplay() }
     }
@@ -170,8 +174,8 @@ import UIKit
     //MARK: - CADisplayLink Tick
     
     internal func displayLinkTick() {
-        
-        let renderTime = displayLink!.duration
+            
+        let renderTime = refreshRate.isZero ? displayLink!.duration : refreshRate
 
         if destinationProgress > progress {
             progress += renderTime
