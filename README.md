@@ -43,7 +43,7 @@ Cocoapods
 Current version is 1.0.7
 
 ```
-pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git', :branch => 'swift-2.0'
+pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 
 ```
 
