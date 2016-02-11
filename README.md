@@ -38,7 +38,7 @@ Configuration
 #import "CircleProgressView-Swift.h"
 ```
 
-Cocoapods
+CocoaPods
 -------
 Current version is 1.0.7
 
