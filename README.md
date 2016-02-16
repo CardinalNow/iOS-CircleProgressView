@@ -23,7 +23,7 @@ Features
 Requirements
 -------
 
-XCode 6
+Xcode 6
 Swift
 iOS 7 +
 
@@ -54,7 +54,7 @@ CircleProgressView can be used via code or interface builder.
 
 * If configuring via code, use the traditional init methods and properties.
 
-* If using Interface Builder, CircleProgressView takes advantage of XCode 6's new 
+* If using Interface Builder, CircleProgressView takes advantage of Xcode 6's new 
 ```swift 
 @IBDesignable 
 ``` 
