@@ -90,6 +90,8 @@ import UIKit
     
     func internalInit() {
         displayLink = CADisplayLink(target: self, selector: Selector("displayLinkTick"))
+        displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+        displayLink?.paused = true
     }
     
     override public func drawRect(rect: CGRect) {
@@ -165,7 +167,7 @@ import UIKit
         
         if animated {
             destinationProgress = newProgress
-            displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+            displayLink?.paused = false
         } else {
             progress = newProgress
         }
@@ -181,18 +183,15 @@ import UIKit
             progress += renderTime
             if progress >= destinationProgress {
                 progress = destinationProgress
-                displayLink?.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-                return
             }
         }
-        
-        if destinationProgress < progress {
+        else if destinationProgress < progress {
             progress -= renderTime
             if progress <= destinationProgress {
                 progress = destinationProgress
-                displayLink?.removeFromRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-                return
             }
+        } else {
+            displayLink?.paused = true
         }
     }
     
