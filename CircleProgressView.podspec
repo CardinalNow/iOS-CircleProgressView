@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'CircleProgressView'
-  s.version  = '1.0.9'
+  s.version  = '1.0.10'
   s.license  = 'MIT'
   s.summary  = 'CircleProgressView'
   s.homepage = 'https://github.com/CardinalNow/iOS-CircleProgressView'
@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.requires_arc = true
   s.source_files = 'ProgressView/*.swift'
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "7.0"
 end
