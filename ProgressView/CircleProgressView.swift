@@ -48,15 +48,15 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.gray() {
+    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.gray {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackFillColor: UIColor = UIColor.blue() {
+    @IBInspectable public var trackFillColor: UIColor = UIColor.blue {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBorderColor:UIColor = UIColor.clear() {
+    @IBInspectable public var trackBorderColor:UIColor = UIColor.clear {
         didSet { setNeedsDisplay() }
     }
 
@@ -64,7 +64,7 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var centerFillColor: UIColor = UIColor.white() {
+    @IBInspectable public var centerFillColor: UIColor = UIColor.white {
         didSet { setNeedsDisplay() }
     }
     
@@ -90,7 +90,7 @@ import UIKit
     
     func internalInit() {
         displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
-        displayLink?.add(to: RunLoop.main(), forMode: RunLoopMode.defaultRunLoopMode.rawValue)
+        displayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
         displayLink?.isPaused = true
     }
     

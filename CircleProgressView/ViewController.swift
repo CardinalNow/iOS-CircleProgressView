@@ -47,8 +47,9 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Helpers
-    func delay(_ delay:Double, closure: ()-> Void) {
-        DispatchQueue.main.after(when: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+    func delay(_ delay:Double, closure: @escaping ()-> Void) {
+        let delayTime = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: closure)
     }
     
 }
