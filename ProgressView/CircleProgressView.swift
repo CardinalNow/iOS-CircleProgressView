@@ -8,9 +8,9 @@
 
 import UIKit
 
-@objc @IBDesignable public class CircleProgressView: UIView {
+@objc @IBDesignable open class CircleProgressView: UIView {
 
-    private struct Constants {
+    fileprivate struct Constants {
         let circleDegress = 360.0
         let minimumValue = 0.000001
         let maximumValue = 0.999999
@@ -19,60 +19,60 @@ import UIKit
         var contentView:UIView = UIView()
     }
 
-    private let constants = Constants()
-    private var internalProgress:Double = 0.0
+    fileprivate let constants = Constants()
+    fileprivate var internalProgress:Double = 0.0
 
-    private var displayLink: CADisplayLink?
-    private var destinationProgress: Double = 0.0
+    fileprivate var displayLink: CADisplayLink?
+    fileprivate var destinationProgress: Double = 0.0
     
-    @IBInspectable public var progress: Double = 0.000001 {
+    @IBInspectable open var progress: Double = 0.000001 {
         didSet {
             internalProgress = progress
             setNeedsDisplay()
         }
     }
 
-    @IBInspectable public var refreshRate: Double = 0.0 {
+    @IBInspectable open var refreshRate: Double = 0.0 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var clockwise: Bool = true {
+    @IBInspectable open var clockwise: Bool = true {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackWidth: CGFloat = 10 {
+    @IBInspectable open var trackWidth: CGFloat = 10 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackImage: UIImage? {
+    @IBInspectable open var trackImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.gray {
+    @IBInspectable open var trackBackgroundColor: UIColor = UIColor.gray {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackFillColor: UIColor = UIColor.blue {
+    @IBInspectable open var trackFillColor: UIColor = UIColor.blue {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBorderColor:UIColor = UIColor.clear {
+    @IBInspectable open var trackBorderColor:UIColor = UIColor.clear {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBorderWidth: CGFloat = 0 {
+    @IBInspectable open var trackBorderWidth: CGFloat = 0 {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var centerFillColor: UIColor = UIColor.white {
+    @IBInspectable open var centerFillColor: UIColor = UIColor.white {
         didSet { setNeedsDisplay() }
     }
     
-    @IBInspectable public var centerImage: UIImage? {
+    @IBInspectable open var centerImage: UIImage? {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var contentView: UIView {
+    @IBInspectable open var contentView: UIView {
         return self.constants.contentView
     }
 
@@ -94,7 +94,7 @@ import UIKit
         displayLink?.isPaused = true
     }
     
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         
         super.draw(rect)
         
@@ -163,7 +163,7 @@ import UIKit
     
     //MARK: - Progress Update
     
-    public func setProgress(_ newProgress: Double, animated: Bool) {
+    open func setProgress(_ newProgress: Double, animated: Bool) {
         
         if animated {
             destinationProgress = newProgress
