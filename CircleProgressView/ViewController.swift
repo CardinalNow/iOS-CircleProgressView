@@ -15,17 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var clockwiseSwitch: UISwitch!
     
-    let nf = NSNumberFormatter()
+    let nf = NumberFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        nf.numberStyle = NumberFormatter.Style.decimal
         nf.maximumFractionDigits = 2
         
         self.clockwiseSwitch.setOn(self.circleProgressView.clockwise, animated: false)
         self.progressSlider.value = Float(self.circleProgressView.progress)
-        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))!
+        self.progressLabel.text = "Progress: " + nf.string(from: NSNumber(value: self.circleProgressView.progress))!
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,26 +34,22 @@ class ViewController: UIViewController {
 
     // MARK: - IBActions
 
-    @IBAction func sliderDidChangeValue(sender: AnyObject) {
+    @IBAction func sliderDidChangeValue(_ sender: AnyObject) {
         let slider:UISlider = sender as! UISlider
         self.circleProgressView.progress = Double(slider.value)
-        self.progressLabel.text = "Progress: " + nf.stringFromNumber(NSNumber(double: self.circleProgressView.progress))!
+        self.progressLabel.text = "Progress: " + nf.string(from: NSNumber(value: self.circleProgressView.progress))!
     }
     
-    @IBAction func switchDidChangeValue(sender: AnyObject) {
+    @IBAction func switchDidChangeValue(_ sender: AnyObject) {
         let mySwitch:UISwitch = sender as! UISwitch
-        self.circleProgressView.clockwise = mySwitch.on
+        self.circleProgressView.clockwise = mySwitch.isOn
         self.circleProgressView.progress = self.circleProgressView.progress
     }
 
     // MARK: - Helpers
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+    func delay(_ delay:Double, closure: @escaping ()-> Void) {
+        let delayTime = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: closure)
     }
     
 }

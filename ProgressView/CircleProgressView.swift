@@ -48,15 +48,15 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.grayColor() {
+    @IBInspectable public var trackBackgroundColor: UIColor = UIColor.gray {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackFillColor: UIColor = UIColor.blueColor() {
+    @IBInspectable public var trackFillColor: UIColor = UIColor.blue {
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var trackBorderColor:UIColor = UIColor.clearColor() {
+    @IBInspectable public var trackBorderColor:UIColor = UIColor.clear {
         didSet { setNeedsDisplay() }
     }
 
@@ -64,7 +64,7 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
 
-    @IBInspectable public var centerFillColor: UIColor = UIColor.whiteColor() {
+    @IBInspectable public var centerFillColor: UIColor = UIColor.white {
         didSet { setNeedsDisplay() }
     }
     
@@ -90,15 +90,15 @@ import UIKit
     
     func internalInit() {
         displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
-        displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-        displayLink?.paused = true
+        displayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+        displayLink?.isPaused = true
     }
     
-    override public func drawRect(rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
-        super.drawRect(rect)
+        super.draw(rect)
         
-        let innerRect = CGRectInset(rect, trackBorderWidth, trackBorderWidth)
+        let innerRect = rect.insetBy(dx: trackBorderWidth, dy: trackBorderWidth)
         
         internalProgress = (internalProgress/1.0) == 0.0 ? constants.minimumValue : progress
         internalProgress = (internalProgress/1.0) == 1.0 ? constants.maximumValue : internalProgress
@@ -110,7 +110,7 @@ import UIKit
         
         // background Drawing
         trackBackgroundColor.setFill()
-        let circlePath = UIBezierPath(ovalInRect: CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect)))
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX, y: innerRect.minY, width: innerRect.width, height: innerRect.height))
         circlePath.fill();
         
         if trackBorderWidth > 0 {
@@ -121,53 +121,53 @@ import UIKit
         
         // progress Drawing
         let progressPath = UIBezierPath()
-        let progressRect: CGRect = CGRectMake(innerRect.minX, innerRect.minY, CGRectGetWidth(innerRect), CGRectGetHeight(innerRect))
-        let center = CGPointMake(progressRect.midX, progressRect.midY)
+        let progressRect: CGRect = CGRect(x: innerRect.minX, y: innerRect.minY, width: innerRect.width, height: innerRect.height)
+        let center = CGPoint(x: progressRect.midX, y: progressRect.midY)
         let radius = progressRect.width / 2.0
         let startAngle:CGFloat = clockwise ? CGFloat(-internalProgress * M_PI / 180.0) : CGFloat(constants.twoSeventyDegrees * M_PI / 180)
         let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-internalProgress * M_PI / 180.0)
         
-        progressPath.addArcWithCenter(center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
-        progressPath.addLineToPoint(CGPointMake(progressRect.midX, progressRect.midY))
-        progressPath.closePath()
+        progressPath.addArc(withCenter: center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
+        progressPath.addLine(to: CGPoint(x: progressRect.midX, y: progressRect.midY))
+        progressPath.close()
         
-        CGContextSaveGState(context!)
+        context?.saveGState()
         
         progressPath.addClip()
         
         if trackImage != nil {
-            trackImage!.drawInRect(innerRect)
+            trackImage!.draw(in: innerRect)
         } else {
             trackFillColor.setFill()
             circlePath.fill()
         }
         
-        CGContextRestoreGState(context!)
+        context?.restoreGState()
         
         // center Drawing
-        let centerPath = UIBezierPath(ovalInRect: CGRectMake(innerRect.minX + trackWidth, innerRect.minY + trackWidth, CGRectGetWidth(innerRect) - (2 * trackWidth), CGRectGetHeight(innerRect) - (2 * trackWidth)))
+        let centerPath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX + trackWidth, y: innerRect.minY + trackWidth, width: innerRect.width - (2 * trackWidth), height: innerRect.height - (2 * trackWidth)))
         centerFillColor.setFill()
         centerPath.fill()
         
         if let centerImage = centerImage {
-            CGContextSaveGState(context!)
+            context?.saveGState()
             centerPath.addClip()
-            centerImage.drawInRect(rect)
-            CGContextRestoreGState(context!)
+            centerImage.draw(in: rect)
+            context?.restoreGState()
         } else {
             let layer = CAShapeLayer()
-            layer.path = centerPath.CGPath
+            layer.path = centerPath.cgPath
             contentView.layer.mask = layer
         }
     }
     
     //MARK: - Progress Update
     
-    public func setProgress(newProgress: Double, animated: Bool) {
+    public func setProgress(_ newProgress: Double, animated: Bool) {
         
         if animated {
             destinationProgress = newProgress
-            displayLink?.paused = false
+            displayLink?.isPaused = false
         } else {
             progress = newProgress
         }
@@ -191,7 +191,7 @@ import UIKit
                 progress = destinationProgress
             }
         } else {
-            displayLink?.paused = true
+            displayLink?.isPaused = true
         }
     }
     
