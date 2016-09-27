@@ -23,9 +23,9 @@ Features
 Requirements
 -------
 
-Xcode 6
-Swift
-iOS 7 +
+Xcode 8
+Swift 3.0
+iOS 8 +
 
 Configuration
 -------
@@ -40,11 +40,17 @@ Configuration
 
 CocoaPods
 -------
-Current version is 1.0.7
+Current version is 1.0.12
 
 ```
 pod 'CircleProgressView', :git => 'https://github.com/CardinalNow/iOS-CircleProgressView.git'
 
+```
+
+or 
+
+```
+pod 'CircleProgressView', '~> 1.0'
 ```
 
 Usage
