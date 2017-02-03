@@ -110,6 +110,7 @@ import UIKit
 
         // background Drawing
         let circlePath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX, y: innerRect.minY, width: innerRect.width, height: innerRect.height))
+
         if trackBackgroundColor != UIColor.clear {
             trackBackgroundColor.setFill()
             circlePath.fill();
@@ -149,6 +150,7 @@ import UIKit
 
         // center Drawing
         let centerPath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX + trackWidth, y: innerRect.minY + trackWidth, width: innerRect.width - (2 * trackWidth), height: innerRect.height - (2 * trackWidth)))
+
         if centerFillColor != UIColor.clear {
             centerFillColor.setFill()
             centerPath.fill()
@@ -175,6 +177,7 @@ import UIKit
             displayLink?.isPaused = false
         } else {
             progress = newProgress
+            displayLink?.isPaused = true
         }
     }
 
