@@ -110,9 +110,12 @@ import UIKit
         let context = UIGraphicsGetCurrentContext()
 
         // background Drawing
-        trackBackgroundColor.setFill()
         let circlePath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX, y: innerRect.minY, width: innerRect.width, height: innerRect.height))
-        circlePath.fill();
+
+        if trackBackgroundColor != UIColor.clear {
+            trackBackgroundColor.setFill()
+            circlePath.fill();
+        }
 
         if trackBorderWidth > 0 {
             circlePath.lineWidth = trackBorderWidth
@@ -129,16 +132,17 @@ import UIKit
         let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-internalProgress * M_PI / 180.0)
 
         progressPath.addArc(withCenter: center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
-        progressPath.addLine(to: CGPoint(x: progressRect.midX, y: progressRect.midY))
+        progressPath.addArc(withCenter: center, radius:radius-trackWidth, startAngle:endAngle, endAngle:startAngle, clockwise:clockwise)
+        //progressPath.addLine(to: CGPoint(x: progressRect.midX, y: progressRect.midY))
         progressPath.close()
 
         context?.saveGState()
 
         progressPath.addClip()
 
-        if trackImage != nil {
-            trackImage!.draw(in: innerRect)
-        } else {
+        if let trackImage = trackImage {
+            trackImage.draw(in: innerRect)
+        } else if trackFillColor != UIColor.clear {
             trackFillColor.setFill()
             circlePath.fill()
         }
@@ -147,8 +151,11 @@ import UIKit
 
         // center Drawing
         let centerPath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX + trackWidth, y: innerRect.minY + trackWidth, width: innerRect.width - (2 * trackWidth), height: innerRect.height - (2 * trackWidth)))
-        centerFillColor.setFill()
-        centerPath.fill()
+      
+        if centerFillColor != UIColor.clear {
+            centerFillColor.setFill()
+            centerPath.fill()
+        }
 
         if let centerImage = centerImage {
             context?.saveGState()
@@ -171,6 +178,7 @@ import UIKit
             displayLink?.isPaused = false
         } else {
             progress = newProgress
+            displayLink?.isPaused = true
         }
     }
 
