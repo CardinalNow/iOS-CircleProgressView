@@ -22,7 +22,7 @@ import UIKit
     fileprivate let constants = Constants()
     fileprivate var internalProgress:Double = 0.0
 
-    fileprivate var displayLink: CADisplayLink?
+    fileprivate weak var displayLink: CADisplayLink?
     fileprivate var destinationProgress: Double = 0.0
 
     @IBInspectable open var progress: Double = 0.000001 {
@@ -89,9 +89,10 @@ import UIKit
     }
 
     func internalInit() {
-        displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
-        displayLink?.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
-        displayLink?.isPaused = true
+        let displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
+        displayLink.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
+        displayLink.isPaused = true
+        self.displayLink = displayLink
     }
 
     override open func draw(_ rect: CGRect) {
@@ -150,7 +151,7 @@ import UIKit
 
         // center Drawing
         let centerPath = UIBezierPath(ovalIn: CGRect(x: innerRect.minX + trackWidth, y: innerRect.minY + trackWidth, width: innerRect.width - (2 * trackWidth), height: innerRect.height - (2 * trackWidth)))
-
+      
         if centerFillColor != UIColor.clear {
             centerFillColor.setFill()
             centerPath.fill()
