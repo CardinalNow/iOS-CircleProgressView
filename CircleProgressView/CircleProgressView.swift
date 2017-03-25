@@ -36,6 +36,11 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
 
+    @IBInspectable open var roundedCap: Bool = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     @IBInspectable open var clockwise: Bool = true {
         didSet { setNeedsDisplay() }
     }
@@ -128,12 +133,23 @@ import UIKit
         let radius = progressRect.width / 2.0
         let startAngle:CGFloat = clockwise ? CGFloat(-internalProgress * M_PI / 180.0) : CGFloat(constants.twoSeventyDegrees * M_PI / 180)
         let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-internalProgress * M_PI / 180.0)
-
+ 
         progressPath.addArc(withCenter: center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
+        let r = radius - trackWidth * 0.5
+        if roundedCap {
+            let capCenter = CGPoint(x: center.x + r * cos(endAngle), y: center.y + r * sin(endAngle))
+        
+            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: endAngle, endAngle: endAngle + CGFloat(M_PI), clockwise: !clockwise)
+        }
         progressPath.addArc(withCenter: center, radius:radius-trackWidth, startAngle:endAngle, endAngle:startAngle, clockwise:clockwise)
-        //progressPath.addLine(to: CGPoint(x: progressRect.midX, y: progressRect.midY))
+        
+        if roundedCap {
+        let capCenter = CGPoint(x: center.x + r * cos(startAngle), y: center.y + r * sin(startAngle))
+        
+            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: startAngle, endAngle: startAngle + CGFloat(M_PI), clockwise: clockwise)
+        }
         progressPath.close()
-
+        
         context?.saveGState()
 
         progressPath.addClip()
