@@ -140,14 +140,14 @@ import UIKit
         if roundedCap {
             let capCenter = CGPoint(x: center.x + r * cos(endAngle), y: center.y + r * sin(endAngle))
         
-            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: endAngle, endAngle: endAngle + CGFloat(M_PI), clockwise: !clockwise)
+            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: endAngle, endAngle: endAngle + CGFloat(Double.pi), clockwise: !clockwise)
         }
         progressPath.addArc(withCenter: center, radius:radius-trackWidth, startAngle:endAngle, endAngle:startAngle, clockwise:clockwise)
         
         if roundedCap {
         let capCenter = CGPoint(x: center.x + r * cos(startAngle), y: center.y + r * sin(startAngle))
         
-            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: startAngle, endAngle: startAngle + CGFloat(M_PI), clockwise: clockwise)
+            progressPath.addArc(withCenter: capCenter, radius: trackWidth * 0.5, startAngle: startAngle, endAngle: startAngle + CGFloat(Double.pi), clockwise: clockwise)
         }
         progressPath.close()
         
