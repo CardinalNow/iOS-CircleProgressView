@@ -126,8 +126,8 @@ import UIKit
         let progressRect: CGRect = CGRect(x: innerRect.minX, y: innerRect.minY, width: innerRect.width, height: innerRect.height)
         let center = CGPoint(x: progressRect.midX, y: progressRect.midY)
         let radius = progressRect.width / 2.0
-        let startAngle:CGFloat = clockwise ? CGFloat(-internalProgress * M_PI / 180.0) : CGFloat(constants.twoSeventyDegrees * M_PI / 180)
-        let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * M_PI / 180) : CGFloat(-internalProgress * M_PI / 180.0)
+        let startAngle:CGFloat = clockwise ? CGFloat(-internalProgress * Double.pi / 180.0) : CGFloat(constants.twoSeventyDegrees * Double.pi / 180)
+        let endAngle:CGFloat = clockwise ? CGFloat(constants.twoSeventyDegrees * Double.pi / 180) : CGFloat(-internalProgress * Double.pi / 180.0)
 
         progressPath.addArc(withCenter: center, radius:radius, startAngle:startAngle, endAngle:endAngle, clockwise:!clockwise)
         progressPath.addArc(withCenter: center, radius:radius-trackWidth, startAngle:endAngle, endAngle:startAngle, clockwise:clockwise)
