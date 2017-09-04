@@ -199,7 +199,7 @@ import UIKit
 
     //MARK: - CADisplayLink Tick
 
-    internal func displayLinkTick() {
+    @objc internal func displayLinkTick() {
 
         let renderTime = refreshRate.isZero ? displayLink!.duration : refreshRate
 
