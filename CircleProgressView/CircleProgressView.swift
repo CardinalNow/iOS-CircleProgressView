@@ -37,9 +37,7 @@ import UIKit
     }
 
     @IBInspectable open var roundedCap: Bool = false {
-        didSet {
-            setNeedsDisplay()
-        }
+        didSet { setNeedsDisplay() }
     }
     @IBInspectable open var clockwise: Bool = true {
         didSet { setNeedsDisplay() }
@@ -93,7 +91,7 @@ import UIKit
         self.addSubview(contentView)
     }
 
-    func internalInit() {
+    @objc func internalInit() {
         let displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
         displayLink.add(to: RunLoop.main, forMode: .defaultRunLoopMode)
         displayLink.isPaused = true
@@ -186,7 +184,7 @@ import UIKit
 
     //MARK: - Progress Update
 
-    open func setProgress(_ newProgress: Double, animated: Bool) {
+    @objc open func setProgress(_ newProgress: Double, animated: Bool) {
 
         if animated {
             destinationProgress = newProgress
@@ -199,7 +197,7 @@ import UIKit
 
     //MARK: - CADisplayLink Tick
 
-    internal func displayLinkTick() {
+    @objc internal func displayLinkTick() {
 
         let renderTime = refreshRate.isZero ? displayLink!.duration : refreshRate
 

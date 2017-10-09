@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Helpers
-    func delay(_ delay:Double, closure: @escaping ()-> Void) {
+    @objc func delay(_ delay:Double, closure: @escaping ()-> Void) {
         let delayTime = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: delayTime, execute: closure)
     }
