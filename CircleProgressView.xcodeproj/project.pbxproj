@@ -15,6 +15,7 @@
 		CB095FCB199A8F44009C1C26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB095FCA199A8F44009C1C26 /* ViewController.swift */; };
 		CB095FCE199A8F44009C1C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCC199A8F44009C1C26 /* Main.storyboard */; };
 		CB095FD0199A8F44009C1C26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB095FCF199A8F44009C1C26 /* Images.xcassets */; };
+		CB20A11F1F8BC7EC00E34AC1 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6347077E1E17B3FD001C31D2 /* CircleProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,7 @@
 			files = (
 				CB095FCB199A8F44009C1C26 /* ViewController.swift in Sources */,
 				CB095FC9199A8F44009C1C26 /* AppDelegate.swift in Sources */,
+				CB20A11F1F8BC7EC00E34AC1 /* CircleProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
