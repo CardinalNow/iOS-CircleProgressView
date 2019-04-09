@@ -91,6 +91,22 @@ import UIKit
         self.addSubview(contentView)
     }
 
+    open override func willMove(toSuperview newSuperview: UIView?) {
+        if newSuperview == nil {
+            displayLink?.invalidate()
+            displayLink = nil
+        }
+        super.willMove(toSuperview: newSuperview)
+    }
+
+    open override func willMove(toWindow newWindow: UIWindow?) {
+        if newWindow == nil {
+            displayLink?.invalidate()
+            displayLink = nil
+        }
+        super.willMove(toSuperview: newWindow)
+    }
+
     @objc func internalInit() {
         let displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressView.displayLinkTick))
         displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
