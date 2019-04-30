@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.platform = :ios
   s.requires_arc = true
   s.source_files = 'CircleProgressView/*.swift'
+  s.exclude_files = 'CircleProgressView/AppDelegate.swift'
   s.ios.deployment_target = "8.0"
   s.swift_version = '4.2'
 end
